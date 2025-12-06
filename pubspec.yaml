@@ -1,0 +1,10 @@
+name: magzinemaker
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.0.0
+  hive: ^2.0.0
+  hive_flutter: ^1.0.0
+
+# Add other standard pubspec stuff as needed
