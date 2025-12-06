@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart'; // Add this import at the top
+
 void main() {
-  runApp(const MagazineMakerApp());
+  runApp(
+    const ProviderScope(
+      child: MagazineMakerApp(),
+    ),
+  );
 }
 
 class MagazineMakerApp extends StatelessWidget {
