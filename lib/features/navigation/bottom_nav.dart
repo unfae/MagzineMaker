@@ -12,7 +12,7 @@ class MainBottomNav extends StatelessWidget {
       onTap: onTap,
       selectedItemColor: const Color(0xFFFF9300),
       unselectedItemColor: Colors.grey,
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(icon: Icon(Icons.create), label: 'Create'),

@@ -1,10 +1,22 @@
-name: magzinemaker
+name: magazinemaker
+description: A new Flutter project.
+publish_to: "none" # Remove this line if you want to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.0.0
   hive: ^2.0.0
   hive_flutter: ^1.0.0
 
-# Add other standard pubspec stuff as needed
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
