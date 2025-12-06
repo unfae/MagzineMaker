@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
-import 'core/navigation/main_bottom_nav.dart'; // 👈 NEW (you already referenced MainBottomNav)
+import 'features/navigation/bottom_nav.dart'; // 👈 NEW (you already referenced MainBottomNav)
 
 class MainNavigationShell extends StatefulWidget {
   const MainNavigationShell({super.key});
