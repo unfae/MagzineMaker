@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 final ThemeData appDarkTheme = ThemeData(
   brightness: Brightness.dark,
@@ -21,26 +23,25 @@ final ThemeData appDarkTheme = ThemeData(
     backgroundColor: Color(0xFFFF9300),
     foregroundColor: Colors.black,
   ),
-  textTheme: const TextTheme(
-    headlineMedium: TextStyle(
+  textTheme: GoogleFonts.interTextTheme().copyWith(
+    headlineMedium: GoogleFonts.playfairDisplay(
       color: Color(0xFFFFD700),
       fontWeight: FontWeight.bold,
       fontSize: 32,
     ),
-    titleLarge: TextStyle(
+    titleLarge: GoogleFonts.playfairDisplay(
       color: Color(0xFFFF9300),
       fontSize: 20,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w600,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: GoogleFonts.inter(
       color: Color(0xFFF6C757), // Warm gold
       fontSize: 16,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: GoogleFonts.inter(
       color: Color(0xFFE6BA91), // Muted gold
       fontSize: 14,
     ),
   ),
-  fontFamily: 'Arial',
   useMaterial3: true,
 );

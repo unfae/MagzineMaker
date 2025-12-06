@@ -1,9 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import 'features/navigation/bottom_nav.dart'; // 👈 NEW (you already referenced MainBottomNav)
+import 'package:magazinemaker/core/theme/app_theme.dart';
+import 'features/navigation/bottom_nav.dart';
 
-void main() {
-  runApp(const MagazineMakerApp());
+// TEMP Screens (until real ones replace them)
+import 'features/home/home_screen.dart';
+import 'features/create/create_magazine_screen.dart';
+import 'features/templates/templates_screen.dart';
+import 'features/drafts/drafts_screen.dart';
+import 'features/settings/settings_screen.dart';
+
+import 'services/draft_repository.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Hive local storage
+  await Hive.initFlutter();
+  DraftRepository.registerAdapters();
+  await DraftRepository.ensureBoxesOpen();
+
+  runApp(
+    const ProviderScope(
+      child: MagazineMakerApp(),
+    ),
+  );
+}
+
+class MagazineMakerApp extends ConsumerWidget {
+  const MagazineMakerApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      title: 'Magazine Maker',
+      debugShowCheckedModeBanner: false,
+      theme: appDarkTheme,
+      darkTheme: appDarkTheme,
+      themeMode: ThemeMode.dark,
+      home: const MainNavigationShell(),
+    );
+  }
 }
 
 class MainNavigationShell extends StatefulWidget {
@@ -16,7 +55,7 @@ class MainNavigationShell extends StatefulWidget {
 class _MainNavigationShellState extends State<MainNavigationShell> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _screens = <Widget>[
+  final List<Widget> _screens = const [
     HomeScreen(),
     CreateMagazineScreen(),
     TemplatesScreen(),
@@ -33,47 +72,11 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: SafeArea(child: _screens[_selectedIndex]),
       bottomNavigationBar: MainBottomNav(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
     );
   }
-}
-
-// -- TEMP placeholder screens (until you replace them with your real UI) --
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      Center(child: Text('Home', style: Theme.of(context).textTheme.headlineMedium));
-}
-
-class CreateMagazineScreen extends StatelessWidget {
-  const CreateMagazineScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      Center(child: Text('Create Magazine', style: Theme.of(context).textTheme.headlineMedium));
-}
-
-class TemplatesScreen extends StatelessWidget {
-  const TemplatesScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      Center(child: Text('Templates', style: Theme.of(context).textTheme.headlineMedium));
-}
-
-class DraftsScreen extends StatelessWidget {
-  const DraftsScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      Center(child: Text('Drafts', style: Theme.of(context).textTheme.headlineMedium));
-}
-
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-  @override
-  Widget build(BuildContext context) =>
-      Center(child: Text('Settings', style: Theme.of(context).textTheme.headlineMedium));
 }
