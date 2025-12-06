@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'core/theme/app_theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MagazineMakerApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MagazineMakerApp extends StatelessWidget {
+  const MagazineMakerApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MagazineMaker',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'MagazineMaker Home'),
+      title: 'Magazine Maker',
+      theme: appDarkTheme,       // Our custom dark theme
+      home: const MyHomePage(title: 'Magazine Maker Home'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
