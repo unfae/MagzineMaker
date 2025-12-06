@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'core/theme/app_theme.dart';
+
 import 'features/navigation/bottom_nav.dart'; // 👈 NEW (you already referenced MainBottomNav)
 
 class MainNavigationShell extends StatefulWidget {
