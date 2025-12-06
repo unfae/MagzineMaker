@@ -1,0 +1,16 @@
+[
+  {
+    "id": "magazine_travel_001",
+    "name": "Travel Explorer",
+    "thumbnail": "https://via.placeholder.com/200x280?text=Travel",
+    "pages": 12,
+    "category": "Travel"
+  },
+  {
+    "id": "magazine_fashion_001",
+    "name": "Runway Edition",
+    "thumbnail": "https://via.placeholder.com/200x280?text=Fashion",
+    "pages": 10,
+    "category": "Fashion"
+  }
+]
