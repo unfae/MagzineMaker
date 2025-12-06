@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'features/navigation/bottom_nav.dart'; // 👈 NEW (you already referenced MainBottomNav)
 
+void main() {
+  runApp(const MagazineMakerApp());
+}
+
 class MainNavigationShell extends StatefulWidget {
   const MainNavigationShell({super.key});
 
