@@ -14,6 +14,8 @@ class MagazineMakerApp extends StatelessWidget {
       title: 'Magazine Maker',
       debugShowCheckedModeBanner: false,
       theme: appDarkTheme,
+      darkTheme: appDarkTheme,
+      themeMode: ThemeMode.dark,
       home: const MainNavigationShell(),
     );
   }
