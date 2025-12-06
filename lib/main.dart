@@ -13,10 +13,7 @@ class MagazineMakerApp extends StatelessWidget {
     return MaterialApp(
       title: 'Magazine Maker',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorSchemeSeed: Colors.deepPurple,
-        useMaterial3: true,
-      ),
+      theme: appDarkTheme
       home: const MainNavigationShell(),
     );
   }
@@ -32,7 +29,7 @@ class MainNavigationShell extends StatefulWidget {
 class _MainNavigationShellState extends State<MainNavigationShell> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _screens = <Widget>[
+  final List<Widget> _screens = const [
     HomeScreen(),
     CreateMagazineScreen(),
     TemplatesScreen(),
@@ -41,13 +38,15 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() => _selectedIndex = index);
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: SafeArea(child: _screens[_selectedIndex]),
       bottomNavigationBar: MainBottomNav(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -56,7 +55,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
   }
 }
 
-// -- TEMP PLACEHOLDER SCREENS --
+// Temporary placeholder screens
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
