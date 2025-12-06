@@ -32,7 +32,7 @@ final ThemeData appDarkTheme = ThemeData(
     titleLarge: GoogleFonts.playfairDisplay(
       color: Color(0xFFFF9300),
       fontSize: 20,
-      fontWeight: FontWeight.semibold,
+      fontWeight: FontWeight.w600,
     ),
     bodyLarge: GoogleFonts.inter(
       color: Color(0xFFF6C757), // Warm gold

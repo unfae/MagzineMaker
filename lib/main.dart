@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'features/navigation/bottom_nav.dart';
+import 'package:magazinemaker/core/theme/app_theme.dart';
+
 
 void main() {
   runApp(const MagazineMakerApp());
