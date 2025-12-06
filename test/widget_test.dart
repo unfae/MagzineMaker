@@ -3,7 +3,7 @@ import 'package:magazinemaker/main.dart';
 
 void main() {
   testWidgets('MagazineMaker renders main text', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const MagazineMakerApp());
     expect(find.text('Hello, MagazineMaker!'), findsOneWidget);
   });
 }
