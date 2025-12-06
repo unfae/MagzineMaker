@@ -7,7 +7,6 @@ final ThemeData appDarkTheme = ThemeData(
     brightness: Brightness.dark,
     primary: Color(0xFFFF9300),
     secondary: Color(0xFFFFD700), // Gold
-    background: Color(0xFF141110),
     surface: Color(0xFF241C17),
     onPrimary: Colors.black87,
     onSecondary: Colors.black87,
