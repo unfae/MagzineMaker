@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
-
-import 'features/navigation/bottom_nav.dart'; // 👈 NEW (you already referenced MainBottomNav)
+import 'features/navigation/bottom_nav.dart';
 
 void main() {
   runApp(const MagazineMakerApp());
+}
+
+class MagazineMakerApp extends StatelessWidget {
+  const MagazineMakerApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Magazine Maker',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: Colors.deepPurple,
+        useMaterial3: true,
+      ),
+      home: const MainNavigationShell(),
+    );
+  }
 }
 
 class MainNavigationShell extends StatefulWidget {
@@ -25,9 +41,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(() => _selectedIndex = index);
   }
 
   @override
@@ -42,7 +56,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
   }
 }
 
-// -- TEMP placeholder screens (until you replace them with your real UI) --
+// -- TEMP PLACEHOLDER SCREENS --
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
