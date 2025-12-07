@@ -1,14 +1,14 @@
 class MagazineTemplate {
   final String id;
   final String name;
-  final String thumbnail;
+  final String thumbnailUrl;
   final int pages;
   final String category;
 
   MagazineTemplate({
     required this.id,
     required this.name,
-    required this.thumbnail,
+    required this.thumbnailUrl,
     required this.pages,
     required this.category,
   });
@@ -17,7 +17,7 @@ class MagazineTemplate {
     return MagazineTemplate(
       id: json['id'],
       name: json['name'],
-      thumbnail: json['thumbnail'],
+      thumbnailUrl: json['thumbnailUrl'],
       pages: json['pages'],
       category: json['category'],
     );

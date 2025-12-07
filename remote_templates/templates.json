@@ -3,8 +3,10 @@
     {
       "id": "classic_mag",
       "name": "Classic Magazine",
-      "thumbnail_url": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/thumbnail.png",
-      "zip_url": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/template.zip"
+      "thumbnailUrl": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/thumbnail.png",
+      "file": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/template.zip",
+      "pages": 12,
+      "category": "Fashion"
     }
   ]
 }
