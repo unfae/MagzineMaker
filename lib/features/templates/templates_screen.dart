@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:magazinemaker/features/templates/data/templates_service.dart';
-import 'package:magazinemaker/features/templates/data/template_model.dart';
+import '../templates/data/templates_service.dart';
+import '../templates/data/template_model.dart';
 
 class TemplatesScreen extends StatefulWidget {
-  const TemplatesScreen({super.key});
+  const TemplatesScreen({Key? key}) : super(key: key);
 
   @override
-  State<TemplatesScreen> createState() => _TemplatesScreenState();
+  _TemplatesScreenState createState() => _TemplatesScreenState();
 }
 
 class _TemplatesScreenState extends State<TemplatesScreen> {
@@ -15,72 +15,100 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
   @override
   void initState() {
     super.initState();
-    _futureTemplates = TemplatesService().fetchTemplates();
+    _loadTemplates();
+  }
+
+  void _loadTemplates() {
+    setState(() {
+      _futureTemplates = TemplatesService().fetchTemplates();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Templates")),
       body: FutureBuilder<List<MagazineTemplate>>(
         future: _futureTemplates,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
+
           }
+
           if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'Failed to load templates',
+                    style: TextStyle(color: Colors.redAccent),
+                  ),
+                  const SizedBox(height: 12),
+                  ElevatedButton(
+                    onPressed: _loadTemplates,
+                    child: const Text("Retry"),
+                  )
+                ],
+              ),
+            );
           }
-          final templates = snapshot.data ?? [];
+
+          final templates = snapshot.data!;
+          debugPrint('TemplatesScreen: templates.length = ${templates.length}');
 
           if (templates.isEmpty) {
-            return const Center(child: Text("No templates yet"));
+            return const Center(child: Text("No templates found"));
           }
 
           return GridView.builder(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(16),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
+              childAspectRatio: 0.75,
             ),
             itemCount: templates.length,
             itemBuilder: (context, index) {
               final template = templates[index];
-              return GestureDetector(
+              return InkWell(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Selected: ${template.name}")),
-                  );
+                  // TODO: navigate to template details in next step
                 },
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.grey.shade800),
+                    color: Colors.black12,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(12),
-                          ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
                           child: Image.network(
                             template.thumbnailUrl,
                             fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) =>
+                                const Icon(Icons.broken_image, size: 40),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          template.name,
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          textAlign: TextAlign.center,
+                        Padding(
+                          padding:
+                              const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+                          child: Text(
+                            template.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );

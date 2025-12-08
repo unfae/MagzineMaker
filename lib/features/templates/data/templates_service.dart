@@ -6,14 +6,18 @@ import 'template_model.dart';
 
 class TemplatesService {
   Future<List<MagazineTemplate>> fetchTemplates() async {
-    final String url = "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/templates.json";
+    final String url = "https://raw.githubusercontent.com/unfae/MagzineMaker/main/remote_templates/templates.json";
+    
 
-    final response = await http.get(Uri.parse(url));
 
     try {
-      final response = await http.get(Uri.parse(templatesUrl));
+      final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        final List data = jsonDecode(response.body);
+        final decoded = jsonDecode(response.body);
+
+        // Extract the actual list from the JSON object
+        final List data = decoded['templates'];
+        
         return data.map((e) => MagazineTemplate.fromJson(e)).toList();
       } else {
         throw Exception('Server returned ${response.statusCode}');
