@@ -1,12 +1,23 @@
-{
-  "templates": [
-    {
-      "id": "classic_mag",
-      "name": "Classic Magazine",
-      "thumbnailUrl": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/thumbnail.png",
-      "file": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/template.zip",
-      "pages": 12,
-      "category": "Fashion"
-    }
-  ]
-}
+[
+  {
+    "id": "classic_mag",
+    "name": "Classic Magazine",
+    "thumbnailUrl": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/thumbnail.png",
+    "pages": 12,
+    "category": "Fashion"
+  },
+  {
+    "id": "modern_mag",
+    "name": "Modern Magazine",
+    "thumbnailUrl": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/thumbnail.png",
+    "pages": 18,
+    "category": "Fashion"
+  },
+  {
+    "id": "masculine_mag",
+    "name": "Masculine Magazine",
+    "thumbnailUrl": "https://raw.githubusercontent.com/unfae/MagzineMaker/dev/remote_templates/classic_mag/thumbnail.png",
+    "pages": 14,
+    "category": "Fashion"
+  }
+]
