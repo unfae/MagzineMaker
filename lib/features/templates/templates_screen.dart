@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../templates/data/templates_service.dart';
 import '../templates/data/template_model.dart';
+import '../templates/editor/template_editor_screen.dart';
+
 
 class TemplatesScreen extends StatefulWidget {
   const TemplatesScreen({Key? key}) : super(key: key);
@@ -74,8 +76,14 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
               final template = templates[index];
               return InkWell(
                 onTap: () {
-                  // TODO: navigate to template details in next step
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => TemplateEditorScreen(template: template),
+                    ),
+                  );
                 },
+
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
